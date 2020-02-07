@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="static/main.css">
     </head>
     <body>
-        <div class="rpsWrap">
+        <div class="chatWrap">
             <ul id="events"></ul>
 
             <div class="buttonWrap">
@@ -18,6 +18,10 @@
                     <button id="send">Send</button>
                 </form>
             </div>
+        </div>
+
+        <div class="gameWrap">
+            <canvas id="canvas"></canvas>
         </div>
         <script src="/socket.io/socket.io.js"></script>
         <script src="static/rpsClient.js"></script>

@@ -1,0 +1,15 @@
+.chatWrap {
+    border: solid;
+    width: 300px;
+    height: 600px;
+    background: powderblue;
+    float: left;
+}
+
+.gameWrap {
+    border: solid;
+    width: 800px;
+    height: 600px;
+    background: lightcoral;
+    margin-left: 300px;
+}
