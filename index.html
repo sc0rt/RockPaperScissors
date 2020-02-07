@@ -6,18 +6,20 @@
     </head>
     <body>
         <div class="rpsWrap">
-            <ul id="events">
-                <li>Welcome to Rock Paper Scissors!</li>
-            </ul>
+            <ul id="events"></ul>
 
             <div class="buttonWrap">
-                <input id="chat">
                 <button id="rock">Rock</button>
                 <button id="paper">Paper</button>
                 <button id="scissors">Scissors</button>
-                <button id="send">Send</button>
+
+                <form id="chatForm">
+                    <input id="chat">
+                    <button id="send">Send</button>
+                </form>
             </div>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="static/rpsClient.js"></script>
     </body>
 </html>

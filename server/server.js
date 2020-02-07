@@ -8,9 +8,17 @@ const server = http.Server(app);
 const clientPath = `${__dirname}/../static/`;
 console.log(`Serving static from ${clientPath}`);
 
-
-app.set('port',8080);
+app.set('port', 8080);
 app.use('/static', express.static(clientPath));
+
+const io = socketIO(server);
+io.on('connection', function(socket) {
+    console.log('A connection was made');
+    socket.emit('message', 'You have connected.');
+    socket.on('message', function(text) {
+        io.emit('message', text); //send to everyone connected
+    });
+});
 
 // Routing
 app.get('/', function(request, response) {
