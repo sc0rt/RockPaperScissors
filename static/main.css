@@ -2,8 +2,11 @@
     border: solid;
     width: 300px;
     height: 600px;
+    max-height: 600px;
     background: powderblue;
     float: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .gameWrap {
@@ -12,4 +15,10 @@
     height: 600px;
     background: lightcoral;
     margin-left: 300px;
+}
+
+#events {
+    flex-grow: 1;
+    list-style: none;
+    overflow-y: scroll;
 }
