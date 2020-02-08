@@ -20,7 +20,6 @@ canvas.width = 800;
 canvas.height = 600;
 const context = canvas.getContext('2d');
 
-writeEvent("Let's play Rock Paper Scissors!");
 socket.on('message', function(text) {
     writeEvent(text);
 });

@@ -12,9 +12,26 @@ app.set('port', 5000);
 app.use('/static', express.static(clientPath));
 
 const io = socketIO(server);
+
+var queuedPlayer = null; //initially set as null since there is no connected player
+
 io.on('connection', function(socket) {
-    console.log('A connection was made');
     socket.emit('message', 'You have connected.');
+
+    // if there is a queued up player, then they can play with the one who connects next
+    if (queuedPlayer) {
+        // send messages to both players that the game has started
+        queuedPlayer.emit('message', 'Time to play Rock Paper Scissors!');
+        socket.emit('message', 'Time to play Rock Paper Scissors!');
+
+        // since the game has started, reset the queue
+        queuedPlayer = null;
+    } else {
+        //player has connected, but there is nobody in queue to play against. Then connected player is put into queue
+        queuedPlayer = socket;
+        queuedPlayer.emit('message', 'You are now in queue. <br> Please wait for an opponent.');
+    };
+
     socket.on('message', function(text) {
         io.emit('message', text); //send to everyone connected
     });
