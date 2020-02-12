@@ -14,13 +14,13 @@ class RPSGame {
 
         // event listener for player1 choice
         this._player1.on('choice', (choice) => {
-            this._sendChoiceTo1(choice);
+            //this._sendChoiceTo1(choice); might need for canvas functionality
             this._onChoice1(choice);
         });
 
         // event listener for player1 choice
         this._player2.on('choice', (choice) => {
-            this._sendChoiceTo2(choice);
+            //this._sendChoiceTo2(choice); might need for canvas functionality
             this._onChoice2(choice);
         });
     }
@@ -58,13 +58,14 @@ class RPSGame {
         this._endGame();
     }
 
+    /* might need for canvas functionality
     _sendChoiceTo1(choice) {
         this._player2.emit('opponentChose', choice);
     }
 
     _sendChoiceTo2(choice) {
         this._player1.emit('opponentChose', choice);
-    }
+    } */
 
     _winConditions(choice1, choice2) {
 
