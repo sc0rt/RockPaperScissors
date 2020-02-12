@@ -1,4 +1,6 @@
-// TO DO : Fix the drawing to canvas functionality
+// TO DO : Fix the drawing to canvas functionality.
+// If the opponent's choice is emitted to the socket, 
+// might have to implement a feature that hides these choices from the user
 
 const socket = io();
 const canvas = document.getElementById('canvas');
