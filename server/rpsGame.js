@@ -1,4 +1,5 @@
 class RPSGame {
+    // could use arrays to clean this up
     // these players are the socket connections
     constructor(player1, player2) {
         this._player1 = player1;
