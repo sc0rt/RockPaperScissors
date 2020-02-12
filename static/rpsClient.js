@@ -1,8 +1,12 @@
+// TO DO : Fix the drawing to canvas functionality
+
 const socket = io();
 const canvas = document.getElementById('canvas');
 canvas.width = 800;
 canvas.height = 600;
 const context = canvas.getContext('2d');
+var imgp1 = document.createElement('img');
+var imgp2 = document.createElement('img');
 
 const writeEvent = function(text) {
     const parent = document.querySelector('#events')
@@ -27,15 +31,26 @@ const addButtonListeners = function() {
     ['Rock', 'Paper', 'Scissors'].forEach(function(id) {
         const button = document.getElementById(id);
         button.addEventListener('click', function() {
+            imgp1.src = "img/" + id + "250.png";
             socket.emit('choice', id);
         });
     });
 }
 
+socket.on('opponentChose', function(id) {
+    imgp2.src = "img/" + id + "250.png";
+});
+
 socket.on('message', function(text) {
     writeEvent(text);
 });
 
-document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
+function loopCanvas() {
+    context.clearRect(0, 0, width, height);
+    context.drawImage(imgp1, width/4, height/2, width/4, height/2);
+    context.drawImage(imgp2, width - imgp2.width - width/4, height/2, width/4, height/2);
+}
 
+document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
 addButtonListeners();
+loopCanvas();
