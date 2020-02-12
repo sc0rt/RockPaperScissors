@@ -9,6 +9,7 @@ const writeEvent = function(text) {
     const element = document.createElement('li');
     element.innerHTML = text;
     parent.appendChild(element);
+    parent.scrollTop = parent.scrollHeight - parent.clientHeight; // so chat can scroll down to the new messages
 };
 
 const onFormSubmit = function(event) {
@@ -23,7 +24,7 @@ const onFormSubmit = function(event) {
 // 3 event listeners for the 3 button choices on the html form
 const addButtonListeners = function() {
     // array of the ids of the buttons on the html form, as well as the choices to be sent to the server
-    ['rock', 'paper', 'scissors'].forEach(function(id) {
+    ['Rock', 'Paper', 'Scissors'].forEach(function(id) {
         const button = document.getElementById(id);
         button.addEventListener('click', function() {
             socket.emit('choice', id);

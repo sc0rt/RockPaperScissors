@@ -1,3 +1,5 @@
+// TO DO: fix it so when player refreshes the page, they don't become player 2 in game with inactive player
+
 const http = require('http');
 const express = require('express');
 const path = require('path');
@@ -29,7 +31,7 @@ io.on('connection', function(socket) {
     } else {
         //player has connected, but there is nobody in queue to play against. Then connected player is put into queue
         queuedPlayer = socket;
-        queuedPlayer.emit('message', 'You are now in queue.<br> Please wait for an opponent.');
+        queuedPlayer.emit('message', 'Please wait for an opponent.');
     }
 
     socket.on('message', function(text) {
