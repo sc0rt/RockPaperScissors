@@ -4,6 +4,7 @@ const path = require('path');
 const socketIO = require('socket.io');
 const app = express();
 const server = http.Server(app);
+const RPSGame = require('./rpsGame');
 
 const clientPath = `${__dirname}/../static/`;
 console.log(`Serving static from ${clientPath}`);
@@ -20,17 +21,16 @@ io.on('connection', function(socket) {
 
     // if there is a queued up player, then they can play with the one who connects next
     if (queuedPlayer) {
-        // send messages to both players that the game has started
-        queuedPlayer.emit('message', 'Time to play Rock Paper Scissors!');
-        socket.emit('message', 'Time to play Rock Paper Scissors!');
+        // after importing the RPSGame logic into server.js at the top, it can then be constructed
+        new RPSGame(queuedPlayer, socket);
 
         // since the game has started, reset the queue
         queuedPlayer = null;
     } else {
         //player has connected, but there is nobody in queue to play against. Then connected player is put into queue
         queuedPlayer = socket;
-        queuedPlayer.emit('message', 'You are now in queue. <br> Please wait for an opponent.');
-    };
+        queuedPlayer.emit('message', 'You are now in queue.<br> Please wait for an opponent.');
+    }
 
     socket.on('message', function(text) {
         io.emit('message', text); //send to everyone connected
