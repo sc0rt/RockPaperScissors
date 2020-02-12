@@ -40,6 +40,8 @@ class RPSGame {
         } else {
             this._sendPlayer1('Your choice was already made.');
         }
+
+        this._endGame();
     }
 
     _onChoice2(choice) {
@@ -48,6 +50,24 @@ class RPSGame {
             this._sendPlayer2(`You chose ${choice}.`);
         } else {
             this._sendPlayer2('Your choice was already made.');
+        }
+
+        this._endGame();
+    }
+
+    _endGame() {
+        const choice1 = this._player1Choice;
+        const choice2 = this._player2Choice;
+
+        if (choice1 && choice2) {
+            this._sendPlayer1('Game over! ' + choice1 + ' vs ' + choice2);
+            this._sendPlayer2('Game over! ' + choice2 + ' vs ' + choice1);
+
+            this._player1Choice = null;
+            this._player2Choice = null;
+
+            this._sendPlayer1('Play again?');
+            this._sendPlayer2('Play again?');
         }
     }
 }
