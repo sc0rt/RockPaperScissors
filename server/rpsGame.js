@@ -75,7 +75,7 @@ class RPSGame {
             this._sendPlayer2('Game is a draw!');
         }
 
-        // Player1 wins --------------------------------------------------------------------------------------------------------------
+        // Player1 wins
         if ((choice1 + choice2 == 'RockScissors') || (choice1 + choice2 == 'PaperRock') || (choice1 + choice2 == 'ScissorsPaper')) {
             this._sendPlayer1('You win!');
             this._sendPlayer2('You lose!');
