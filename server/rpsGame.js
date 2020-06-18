@@ -58,15 +58,6 @@ class RPSGame {
         this._endGame();
     }
 
-    /* might need for canvas functionality
-    _sendChoiceTo1(choice) {
-        this._player2.emit('opponentChose', choice);
-    }
-
-    _sendChoiceTo2(choice) {
-        this._player1.emit('opponentChose', choice);
-    } */
-
     _winConditions(choice1, choice2) {
 
         // Game is a draw

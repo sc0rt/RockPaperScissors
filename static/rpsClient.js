@@ -10,6 +10,7 @@ const context = canvas.getContext('2d');
 var imgp1 = document.createElement('img');
 var imgp2 = document.createElement('img');
 
+// writing events into the chat box
 const writeEvent = function(text) {
     const parent = document.querySelector('#events')
     const element = document.createElement('li');
@@ -18,14 +19,20 @@ const writeEvent = function(text) {
     parent.scrollTop = parent.scrollHeight - parent.clientHeight; // so chat can scroll down to the new messages
 };
 
+// take the string value from the input on the chat form
 const onFormSubmit = function(event) {
     event.preventDefault();
     const input = document.querySelector('#chat');
     const text = input.value;
-    input.value = '';
+    input.value = ''; // reset the input value
 
     socket.emit('message', text);
 };
+
+// writing the input string value from the chat form to the event chat box
+socket.on('message', function(text) {
+    writeEvent(text);
+});
 
 // 3 event listeners for the 3 button choices on the html form
 const addButtonListeners = function() {
@@ -39,18 +46,9 @@ const addButtonListeners = function() {
     });
 }
 
-socket.on('opponentChose', function(id) {
-    imgp2.src = "img/" + id + "250.png";
-});
-
-socket.on('message', function(text) {
-    writeEvent(text);
-});
-
+// Main animation loop for the graphical parts of the game
 function loopCanvas() {
-    context.clearRect(0, 0, width, height);
-    context.drawImage(imgp1, width/4, height/2, width/4, height/2);
-    context.drawImage(imgp2, width - imgp2.width - width/4, height/2, width/4, height/2);
+
 }
 
 document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
