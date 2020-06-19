@@ -40,7 +40,6 @@ const addButtonListeners = function() {
     ['Rock', 'Paper', 'Scissors'].forEach(function(id) {
         const button = document.getElementById(id);
         button.addEventListener('click', function() {
-            imgp1.src = "img/" + id + "250.png";
             socket.emit('choice', id);
         });
     });
