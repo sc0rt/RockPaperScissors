@@ -7,12 +7,23 @@ const canvas = document.getElementById('canvas');
 canvas.width = 800;
 canvas.height = 600;
 const context = canvas.getContext('2d');
-var imgp1 = document.createElement('img');
-var imgp2 = document.createElement('img');
+
+var rpsImg = new Image();
+rpsImg.src = 'img/rps.png';
+rpsImg.onload = function() {
+    context.drawImage(this, 0, 0);
+};
+rpsImg.src = 'img/rps600.png';
+//rpsImg.src = 'https://i.imgur.com/JH0XMFQ.png';
+
+var imgP1 = document.createElement('img');
+var imgP2 = document.createElement('img');
+
+/*------------------------------ Chat setup ------------------------------*/
 
 // writing events into the chat box
 const writeEvent = function(text) {
-    const parent = document.querySelector('#events')
+    const parent = document.querySelector('#events');
     const element = document.createElement('li');
     element.innerHTML = text;
     parent.appendChild(element);
@@ -34,6 +45,8 @@ socket.on('message', function(text) {
     writeEvent(text);
 });
 
+/*---------------------------- Gameplay setup ----------------------------*/
+
 // 3 event listeners for the 3 button choices on the html form
 const addButtonListeners = function() {
     // array of the ids of the buttons on the html form, as well as the choices to be sent to the server
@@ -43,13 +56,18 @@ const addButtonListeners = function() {
             socket.emit('choice', id);
         });
     });
-}
+};
 
 // Main animation loop for the graphical parts of the game
+/*
 function loopCanvas() {
 
 }
+*/
+
+/*----------------------------- Execution ------------------------------*/
 
 document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
 addButtonListeners();
-loopCanvas();
+// loopCanvas();
+

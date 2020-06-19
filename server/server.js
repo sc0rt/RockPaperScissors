@@ -16,7 +16,7 @@ app.use('/static', express.static(clientPath));
 
 const io = socketIO(server);
 
-var queuedPlayer = null; //initially set as null since there is no connected player
+var queuedPlayer = null; // initially set as null since there is no connected player
 
 io.on('connection', function(socket) {
     socket.emit('message', 'You have connected.');
@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
     }
 
     socket.on('message', function(text) {
-        io.emit('message', text); //send to everyone connected
+        io.emit('message', text); // send to everyone connected
     });
 });
 

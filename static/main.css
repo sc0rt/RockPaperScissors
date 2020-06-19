@@ -9,12 +9,13 @@
     flex-direction: column;
 }
 
-.gameWrap {
-    border: solid;
+canvas {
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
     width: 800px;
     height: 600px;
     background: lightcoral;
-    margin-left: 300px;
 }
 
 #events {
