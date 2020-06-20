@@ -8,13 +8,12 @@ canvas.width = 800;
 canvas.height = 800;
 const context = canvas.getContext('2d');
 var animation;
-var degree; // initializing the degree of rotation for game logo image
+var degree; // degree of rotation for pre-game animation
+var gameStart = false;
 var imgP1 = document.createElement('img');
 var imgP2 = document.createElement('img');
 var rpsImg = document.createElement('img');
 rpsImg.src = '../static/img/rps600.png';
-
-var gameStart = false;
 
 /*------------------------------ Chat setup ------------------------------*/
 
