@@ -50,21 +50,29 @@ const addButtonListeners = function() {
         const button = document.getElementById(id);
         button.addEventListener('click', function() {
             socket.emit('choice', id);
+            gameStart = true;
         });
     });
 };
 
 // Animation loop before the game start
 function logoLoop() {
-    degree = 0.5;
-    context.clearRect(-rpsImg.width/2 - 100, -rpsImg.height/2 - 100, canvas.width, canvas.height);
-    context.rotate(degree * Math.PI / 180);
-    context.drawImage(rpsImg, -rpsImg.width/2, -rpsImg.height/2);
-    animation = requestAnimationFrame(logoLoop);
+    if (gameStart) {
+        context.translate(-canvas.width/2, -canvas.height/2);
+        gameLoop();
+    } else {
+        degree = 0.5;
+        context.clearRect(-rpsImg.width/2 - 100, -rpsImg.height/2 - 100, canvas.width, canvas.height);
+        context.rotate(degree * Math.PI / 180);
+        context.drawImage(rpsImg, -rpsImg.width/2 - 20, -rpsImg.height/2 + 35);
+        animation = requestAnimationFrame(logoLoop);
+    }
 }
 
 // Main animation loop for the graphical parts of the game
 function gameLoop() {
+    
+    context.clearRect(0, 0, canvas.width, canvas.height);
     animation = requestAnimationFrame(gameLoop);
 }
 
@@ -73,9 +81,5 @@ function gameLoop() {
 document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
 addButtonListeners();
 
-if (!gameStart) {
-    context.translate(canvas.width/2, canvas.height/2);
-    logoLoop();
-} else {
-    gameLoop();
-}
+context.translate(canvas.width/2, canvas.height/2);
+logoLoop(); // runs the logo rotation loop. once R P or S is chosen, gameStart becomes true and the gameLoop executes
