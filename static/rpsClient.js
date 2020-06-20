@@ -57,7 +57,6 @@ const addButtonListeners = function() {
 // Animation loop before the game start
 function loopLogo() {
     degree = 0.5;
-    context.save();
     context.clearRect(-rpsImg.width/2 - 100, -rpsImg.height/2 - 100, canvas.width, canvas.height);
     context.rotate(degree * Math.PI / 180);
     context.drawImage(rpsImg, -rpsImg.width/2, -rpsImg.height/2);
