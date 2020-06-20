@@ -1,8 +1,8 @@
 .chatWrap {
     border: solid;
     width: 300px;
-    height: 600px;
-    max-height: 600px;
+    height: 800px;
+    max-height: 800px;
     background: powderblue;
     float: left;
     display: flex;
@@ -14,7 +14,7 @@ canvas {
     border-bottom: solid;
     border-right: solid;
     width: 800px;
-    height: 600px;
+    height: 800px;
     background: lightcoral;
 }
 

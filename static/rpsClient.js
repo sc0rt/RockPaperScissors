@@ -5,19 +5,16 @@
 const socket = io();
 const canvas = document.getElementById('canvas');
 canvas.width = 800;
-canvas.height = 600;
+canvas.height = 800;
 const context = canvas.getContext('2d');
-
-var rpsImg = new Image();
-rpsImg.src = 'img/rps.png';
-rpsImg.onload = function() {
-    context.drawImage(this, 0, 0);
-};
-rpsImg.src = 'img/rps600.png';
-//rpsImg.src = 'https://i.imgur.com/JH0XMFQ.png';
-
+var animation;
+var degree; // initializing the degree of rotation for game logo image
 var imgP1 = document.createElement('img');
 var imgP2 = document.createElement('img');
+var rpsImg = document.createElement('img');
+rpsImg.src = '../static/img/rps600.png';
+
+var gameStart = false;
 
 /*------------------------------ Chat setup ------------------------------*/
 
@@ -58,16 +55,29 @@ const addButtonListeners = function() {
     });
 };
 
+// Animation loop before the game start
+function loopLogo() {
+    degree = 0.5;
+    context.save();
+    context.clearRect(-rpsImg.width/2 - 100, -rpsImg.height/2 - 100, canvas.width, canvas.height);
+    context.rotate(degree * Math.PI / 180);
+    context.drawImage(rpsImg, -rpsImg.width/2, -rpsImg.height/2);
+    animation = requestAnimationFrame(loopLogo);
+}
+
 // Main animation loop for the graphical parts of the game
-/*
-function loopCanvas() {
+function gameLoop() {
 
 }
-*/
 
 /*----------------------------- Execution ------------------------------*/
 
 document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
 addButtonListeners();
-// loopCanvas();
 
+if (!gameStart) {
+    context.translate(canvas.width/2, canvas.height/2);
+    loopLogo();
+} else {
+    gameLoop();
+}
