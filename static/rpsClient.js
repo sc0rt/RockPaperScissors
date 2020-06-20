@@ -15,7 +15,7 @@ var imgP2 = document.createElement('img');
 var rpsImg = document.createElement('img');
 rpsImg.src = '../static/img/rps600.png';
 
-/*------------------------------ Chat setup ------------------------------*/
+/*------------------------------------------------- Chat setup -------------------------------------------------*/
 
 // writing events into the chat box
 const writeEvent = function(text) {
@@ -41,7 +41,7 @@ socket.on('message', function(text) {
     writeEvent(text);
 });
 
-/*---------------------------- Gameplay setup ----------------------------*/
+/*----------------------------------------------- Gameplay setup -----------------------------------------------*/
 
 // 3 event listeners for the 3 button choices on the html form
 const addButtonListeners = function() {
@@ -68,7 +68,7 @@ function gameLoop() {
 
 }
 
-/*----------------------------- Execution ------------------------------*/
+/*------------------------------------------------ Execution -------------------------------------------------*/
 
 document.querySelector('#chatForm').addEventListener('submit', onFormSubmit);
 addButtonListeners();
