@@ -55,17 +55,17 @@ const addButtonListeners = function() {
 };
 
 // Animation loop before the game start
-function loopLogo() {
+function logoLoop() {
     degree = 0.5;
     context.clearRect(-rpsImg.width/2 - 100, -rpsImg.height/2 - 100, canvas.width, canvas.height);
     context.rotate(degree * Math.PI / 180);
     context.drawImage(rpsImg, -rpsImg.width/2, -rpsImg.height/2);
-    animation = requestAnimationFrame(loopLogo);
+    animation = requestAnimationFrame(logoLoop);
 }
 
 // Main animation loop for the graphical parts of the game
 function gameLoop() {
-
+    animation = requestAnimationFrame(gameLoop);
 }
 
 /*------------------------------------------------ Execution -------------------------------------------------*/
@@ -75,7 +75,7 @@ addButtonListeners();
 
 if (!gameStart) {
     context.translate(canvas.width/2, canvas.height/2);
-    loopLogo();
+    logoLoop();
 } else {
     gameLoop();
 }
