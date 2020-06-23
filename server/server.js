@@ -1,12 +1,13 @@
-// TO DO: fix it so when player refreshes the page, they don't become player 2 in game with inactive player
+// TO DO: 
+// fix it so when player refreshes the page, they don't become player 2 in game with inactive player
 
 const http = require('http');
 const express = require('express');
 const path = require('path');
 const socketIO = require('socket.io');
+const RPSGame = require('./rpsGame');
 const app = express();
 const server = http.Server(app);
-const RPSGame = require('./rpsGame');
 
 const clientPath = `${__dirname}/../static/`;
 console.log(`Serving static from ${clientPath}`);
@@ -51,5 +52,5 @@ server.on('error', function(err) {
 
 // listen to port 5000 and call this function
 server.listen(5000, function() {
-    console.log('RPS has started on 5000');
+    console.log('RPS has started on port 5000');
 });
