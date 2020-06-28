@@ -55,7 +55,7 @@ class RPSGame {
         this.player2.emit('opponentChose', choice);
     }
 
-    _sendChoiceToP2() {
+    _sendChoiceToP2(choice) {
         this.player1.emit('opponentChose', choice);
     } */
 
