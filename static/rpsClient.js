@@ -10,6 +10,7 @@ const context = canvas.getContext('2d');
 var animation;
 var degree; // degree of rotation for pre-game animation
 var gameStart = false;
+display = true;
 var imgP1 = document.createElement('img');
 var imgP2 = document.createElement('img');
 var rpsImg = document.createElement('img');
@@ -60,6 +61,14 @@ socket.on('opponentChose', function(choice) {
     imgP2.src = '../static/img/' + choice + 'Flipped250.png';
 });
 
+socket.on('show', function() {
+    display = true;
+});
+
+socket.on('hide', function() {
+    display = false;
+});
+
 // Animation loop before the game start
 function logoLoop() {
     if (gameStart) {
@@ -77,9 +86,11 @@ function logoLoop() {
 }
 
 function displayChoices() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(imgP1, canvas.width / 8, (canvas.height / 2) - (imgP1.height / 2));
-    context.drawImage(imgP2, canvas.width / 8 + 300, (canvas.height / 2) - (imgP2.height / 2));
+    if (display == true) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(imgP1, canvas.width / 8, (canvas.height / 2) - (imgP1.height / 2));
+        context.drawImage(imgP2, canvas.width / 8 + 350, (canvas.height / 2) - (imgP2.height / 2));
+    }
 }
 
 // Main animation loop for the graphical parts of the game
