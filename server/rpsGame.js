@@ -1,8 +1,9 @@
 class RPSGame {
     // these players are the socket connections
+    // arrays would've been cleaner
     constructor(player1, player2) {
-        this._player1 = player1;
-        this._player2 = player2;
+        this._player1 = player1; // queued player
+        this._player2 = player2; // last player to connect
 
         this._player1Choice = null;
         this._player2Choice = null;
@@ -13,14 +14,14 @@ class RPSGame {
 
         // event listener for player1 choice
         this._player1.on('choice', (choice) => {
-            //this._sendChoiceTo1(choice); might need for canvas functionality
-            this._onChoice1(choice);
+            this._sendChoiceToP2(choice);
+            this._onChoiceP1(choice);
         });
 
-        // event listener for player1 choice
+        // event listener for player2 choice
         this._player2.on('choice', (choice) => {
-            //this._sendChoiceTo2(choice); might need for canvas functionality
-            this._onChoice2(choice);
+            this._sendChoiceToP1(choice);
+            this._onChoiceP2(choice);
         });
     }
 
@@ -35,30 +36,30 @@ class RPSGame {
     }
 
     // feedback for players to know that their choice was registered
-    _onChoice1(choice) {
-        if (this._player1Choice == null) {
-            this._player1Choice = choice;
-            this._sendPlayer1(`You chose ${choice}.`);
-        } else {
-            this._sendPlayer1(`Your already chose ${this._player1Choice}.`);
-        }
+    _onChoiceP1(choice) {
+        this._player1Choice = choice;
+        this._sendPlayer1(`You chose ${choice}.`);
 
         this._endGame();
     }
 
-    _onChoice2(choice) {
-        if (this._player2Choice == null) {
-            this._player2Choice = choice;
-            this._sendPlayer2(`You chose ${choice}.`);
-        } else {
-            this._sendPlayer2(`Your already chose ${this._player2Choice}.`);
-        }
+    _onChoiceP2(choice) {
+        this._player2Choice = choice;
+        this._sendPlayer2(`You chose ${choice}.`);
 
         this._endGame();
+    }
+
+    // send opponent's choice to the other player
+    _sendChoiceToP1(choice) {
+        this.player2.emit('opponentChose', choice);
+    }
+
+    _sendChoiceToP2() {
+        this.player1.emit('opponentChose', choice);
     }
 
     _winConditions(choice1, choice2) {
-
         // Game is a draw
         if (choice1 == choice2) {
             this._sendPlayer1('Game is a draw!');
