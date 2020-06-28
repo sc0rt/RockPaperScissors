@@ -14,13 +14,13 @@ class RPSGame {
 
         // event listener for player1 choice
         this._player1.on('choice', (choice) => {
-            this._sendChoiceToP2(choice);
+            //this._sendChoiceToP2(choice);
             this._onChoiceP1(choice);
         });
 
         // event listener for player2 choice
         this._player2.on('choice', (choice) => {
-            this._sendChoiceToP1(choice);
+            //this._sendChoiceToP1(choice);
             this._onChoiceP2(choice);
         });
     }
@@ -50,14 +50,14 @@ class RPSGame {
         this._endGame();
     }
 
-    // send opponent's choice to the other player
+    /* send opponent's choice to the other player
     _sendChoiceToP1(choice) {
         this.player2.emit('opponentChose', choice);
     }
 
     _sendChoiceToP2() {
         this.player1.emit('opponentChose', choice);
-    }
+    } */
 
     _winConditions(choice1, choice2) {
         // Game is a draw
