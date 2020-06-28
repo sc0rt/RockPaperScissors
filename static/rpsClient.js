@@ -78,8 +78,8 @@ function logoLoop() {
 
 function displayChoices() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(imgP1, canvas.width / 8 , (canvas.height / 2) - (imgP1.height / 2));
-    context.drawImage(imgP2, canvas.width / 8, (canvas.height / 2) - (imgP2.height / 2));
+    context.drawImage(imgP1, canvas.width / 8, (canvas.height / 2) - (imgP1.height / 2));
+    context.drawImage(imgP2, canvas.width / 8 + 300, (canvas.height / 2) - (imgP2.height / 2));
 }
 
 // Main animation loop for the graphical parts of the game
