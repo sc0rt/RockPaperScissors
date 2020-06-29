@@ -1,7 +1,3 @@
-// TO DO:
-// If the opponent's choice is emitted to the socket, 
-// might have to implement a feature that hides these choices from the user
-
 const socket = io();
 const canvas = document.getElementById('canvas');
 canvas.width = 800;
