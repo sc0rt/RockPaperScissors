@@ -5,8 +5,8 @@ canvas.height = 800;
 const context = canvas.getContext('2d');
 var animation;
 var degree; // degree of rotation for pre-game animation
-var gameStart = false;
-display = true;
+var gameStart = false; // boolean value to determine when to start the game
+var display = true; // boolean value to determine when to display the players' choices
 var imgP1 = document.createElement('img');
 var imgP2 = document.createElement('img');
 var rpsImg = document.createElement('img');
