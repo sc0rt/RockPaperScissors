@@ -90,6 +90,8 @@ function displayChoices() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(imgP1, canvas.width / 8, (canvas.height / 2) - (imgP1.height / 2));
         context.drawImage(imgP2, canvas.width / 8 + 350, (canvas.height / 2) - (imgP2.height / 2));
+    } else {
+        context.clearRect(0, 0, canvas.width, canvas.height);
     }
 }
 
