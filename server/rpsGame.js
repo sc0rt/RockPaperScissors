@@ -38,6 +38,7 @@ class RPSGame {
         this._player1Choice = choice;
         this._player2.emit('opponentChose', choice);
         this._player1.emit('hide');
+        this._player2.emit('hide');
         this._sendPlayer1(`You chose ${choice}.`);
 
         this._endGame();
@@ -47,6 +48,7 @@ class RPSGame {
         this._player2Choice = choice;
         this._player1.emit('opponentChose', choice);
         this._player2.emit('hide');
+        this._player1.emit('hide');
         this._sendPlayer2(`You chose ${choice}.`);
 
         this._endGame();
