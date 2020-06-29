@@ -1,3 +1,6 @@
+// TO DO:
+// Could add score keeping
+
 class RPSGame {
     // these players are the socket connections
     // arrays would be cleaner
