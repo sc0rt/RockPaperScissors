@@ -5,7 +5,7 @@ This repo showcases a simple Rock Paper Scissors multiplayer game utilizing Java
 Expanding on this project, I have included some unit tests for some of the functions using the jest framework.
 
 # How to run locally
-In the Command Prompt, first you must initialize the project with `npm init`.
+In the Command Prompt, first you must initialize the project with `npm init -y`.
 Install Express.js, socket.io, and jest with `npm install express socket.io jest`.
 Then run program with `npm start` in the server directory.
 Two browsers can be open to observe the 2-player functionality with an interactive chat. The server can be run on port 5000: http://localhost:5000/
