@@ -21,7 +21,6 @@ const io = socketIO(server);
 var queuedPlayer = null; // initially set as null since there is no connected player
 
 var t0 = performance.now();
-
 io.on('connection', function(socket) {
     var t1 = performance.now();
     console.log("\nConnection time since startup: " + (t1 - t0) + " ms.");
