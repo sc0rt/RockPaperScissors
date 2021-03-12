@@ -29,7 +29,7 @@ io.on('connection', function(socket) {
     var t2 = performance.now();
     socket.emit('message', 'You have connected.');
     var t3 = performance.now();
-    console.log("First message emit() time: " + (t3 - t2) + " ms.");
+    console.log("Connection message emit() time: " + (t3 - t2) + " ms.");
 
     // if there is a queued up player, then they can play with the one who connects next
     if (queuedPlayer) {
