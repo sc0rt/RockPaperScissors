@@ -1,6 +1,8 @@
 // TO DO:
 // Could add score keeping
 
+const {performance} = require('perf_hooks');
+
 class RPSGame {
     // these players are the socket connections
     // arrays would be cleaner
@@ -17,12 +19,18 @@ class RPSGame {
 
         // event listener for player1 choice
         this._player1.on('choice', (choice) => {
+            var t12 = performance.now();
             this._onChoiceP1(choice);
+            var t13 = performance.now();
+            console.log("_onChoiceP1() execution time: " + (t13 - t12) + " ms.");
         });
 
         // event listener for player2 choice
         this._player2.on('choice', (choice) => {
+            var t14 = performance.now();
             this._onChoiceP2(choice);
+            var t15 = performance.now();
+            console.log("_onChoiceP2() execution time: " + (t15 - t14) + " ms.");
         });
     }
 
@@ -44,7 +52,10 @@ class RPSGame {
         this._player2.emit('hide');
         this._sendPlayer1(`You chose ${choice}.`);
 
+        var t6 = performance.now();
         this._endGame();
+        var t7 = performance.now();
+        console.log("_endGame() execution time: " + (t7 - t6) + " ms.");
     }
 
     _onChoiceP2(choice) {
@@ -54,7 +65,10 @@ class RPSGame {
         this._player1.emit('hide');
         this._sendPlayer2(`You chose ${choice}.`);
 
+        var t6 = performance.now();
         this._endGame();
+        var t7 = performance.now();
+        console.log("_endGame() execution time: " + (t7 - t6) + " ms.");
     }
 
     _winConditions(choice1, choice2) {
@@ -82,13 +96,16 @@ class RPSGame {
         const choice2 = this._player2Choice;
 
         if (choice1 && choice2) {
-
             this._player1.emit('show');
             this._player2.emit('show');
 
             this._sendPlayer1(choice1 + ' vs ' + choice2 + ' : Game over!');
             this._sendPlayer2(choice2 + ' vs ' + choice1 + ' : Game over!');
+
+            var t8 = performance.now();
             this._winConditions(choice1, choice2);
+            var t9 = performance.now();
+            console.log("_winConditions() execution time: " + (t9 - t8) + " ms.");
 
             this._player1Choice = null;
             this._player2Choice = null;
