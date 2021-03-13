@@ -9,7 +9,7 @@ Two browsers can be open to observe the 2-player functionality with an interacti
 
 # Software Quality Testing
 Expanding on this project, I have included some unit tests for some of the functions using the Jest framework.
-These tests can be done by using the commands `npm test` or `npm test fileName`.
+These tests can be done by using the commands `npm test` or `npm test fileName`. Another addition that has been made is the inclusion of the ProgramSlices folder for the purposes of static analysis.
 
 # Project Author
 Scott Garland
