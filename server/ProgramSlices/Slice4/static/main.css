@@ -1,0 +1,25 @@
+.chatWrap {
+    border: solid;
+    width: 300px;
+    height: 800px;
+    max-height: 800px;
+    background: powderblue;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+canvas {
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
+    width: 800px;
+    height: 800px;
+    background: lightcoral;
+}
+
+#events {
+    flex-grow: 1;
+    list-style: none;
+    overflow-y: scroll;
+}

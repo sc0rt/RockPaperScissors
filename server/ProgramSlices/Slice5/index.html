@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissor</title>
+        <link rel="stylesheet" type="text/css" href="static/main.css">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    </head>
+    <body>
+        <div class="chatWrap">
+            <ul id="events"></ul>
+
+            <div class="buttonWrap">
+                <button id="Rock">Rock</button>
+                <button id="Paper">Paper</button>
+                <button id="Scissors">Scissors</button>
+
+                <form id="chatForm">
+                    <input id="chat">
+                    <button id="send">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="gameWrap">
+            <canvas id="canvas"></canvas>
+        </div>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="static/rpsClient.js"></script>
+    </body>
+</html>
